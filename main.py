@@ -23,3 +23,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                player_coord = (player_coord[0] + screen_width / number_of_steps, player_coord[1] - screen_width / number_of_steps)
