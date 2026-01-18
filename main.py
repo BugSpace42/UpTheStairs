@@ -10,7 +10,9 @@ square.fill('white')
 
 running = True
 while running:
-    screen.blit(square, (0, 0))
+    for i in range(20):
+        coord = (screen_width*i/20, screen_width*(20-i-1)/20)
+        screen.blit(square, coord)
 
     pygame.display.update()
     for event in pygame.event.get():
