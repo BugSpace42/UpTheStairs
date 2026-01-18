@@ -6,16 +6,18 @@ screen = pygame.display.set_mode((screen_width, screen_width))
 pygame.display.set_caption("Вверх по лестнице")
 
 running = True
-player_coord = (screen_width/40, screen_width * 19 / 20 - screen_width/40)
+number_of_steps = 20
+player_radius = screen_width/(number_of_steps*2)
+player_coord = (player_radius, screen_width * (number_of_steps-1) / number_of_steps - player_radius)
 while running:
     screen.fill('black')
-    square = pygame.Surface((screen_width / 20, screen_width / 20))
+    square = pygame.Surface((screen_width / number_of_steps, screen_width / number_of_steps))
     square.fill('white')
 
-    for i in range(20):
-        coord = (screen_width * i / 20, screen_width * (20 - i - 1) / 20)
+    for i in range(number_of_steps):
+        coord = (screen_width * i / number_of_steps, screen_width * (number_of_steps - i - 1) / number_of_steps)
         screen.blit(square, coord)
-    pygame.draw.circle(screen, "red", (player_coord[0], player_coord[1]), screen_width/40)
+    pygame.draw.circle(screen, "red", (player_coord[0], player_coord[1]), player_radius)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
